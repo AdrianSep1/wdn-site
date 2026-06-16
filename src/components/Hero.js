@@ -6,11 +6,28 @@ function Hero() {
   const heroRef = useRef(null);
   const [loaded, setLoaded] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [stats, setStats] = useState({ members: 500, channels: 50, years: new Date().getFullYear() - 2016 });
 
   useEffect(() => {
     // Trigger entrance animation after mount
     const timer = setTimeout(() => setLoaded(true), 100);
     return () => clearTimeout(timer);
+  }, []);
+
+  // Fetch real-time Discord stats
+  useEffect(() => {
+    fetch('/api/discord-stats')
+      .then((res) => res.json())
+      .then((data) => {
+        setStats({
+          members: data.members || 500,
+          channels: data.channels || 50,
+          years: data.years || new Date().getFullYear() - 2016,
+        });
+      })
+      .catch(() => {
+        // Keep fallback values on error
+      });
   }, []);
 
   useEffect(() => {
@@ -115,17 +132,17 @@ function Hero() {
         </div>
         <div className="hero-stats">
           <div className="stat">
-            <CountUp target={500} />
+            <CountUp target={stats.members} />
             <span className="stat-plus">+</span>
             <span className="stat-label">Members</span>
           </div>
           <div className="stat">
-            <CountUp target={50} />
+            <CountUp target={stats.channels} />
             <span className="stat-plus">+</span>
             <span className="stat-label">Channels</span>
           </div>
           <div className="stat">
-            <CountUp target={8} />
+            <CountUp target={stats.years} />
             <span className="stat-plus">+</span>
             <span className="stat-label">Years Active</span>
           </div>
