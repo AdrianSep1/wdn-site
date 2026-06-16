@@ -14,7 +14,7 @@ export default async function handler(req, res) {
     return res.status(500).json({
       error: 'Missing DISCORD_BOT_TOKEN or DISCORD_GUILD_ID environment variables',
       // Fallback values so the site still works
-      members: 500,
+      members: 233,
       channels: 50,
       years: new Date().getFullYear() - 2016,
     });
@@ -71,7 +71,7 @@ export default async function handler(req, res) {
   } catch (error) {
     console.error('Discord API error:', error.message);
     return res.status(200).json({
-      members: 500,
+      members: 233,
       channels: 50,
       years: new Date().getFullYear() - 2016,
       error: error.message,

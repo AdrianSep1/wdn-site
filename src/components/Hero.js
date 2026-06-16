@@ -6,7 +6,7 @@ function Hero() {
   const heroRef = useRef(null);
   const [loaded, setLoaded] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [stats, setStats] = useState({ members: 500, channels: 50, years: new Date().getFullYear() - 2016 });
+  const [stats, setStats] = useState({ members: 233, channels: 50, years: new Date().getFullYear() - 2016 });
 
   useEffect(() => {
     // Trigger entrance animation after mount
