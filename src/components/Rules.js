@@ -4,38 +4,26 @@ import ScrollReveal from './ScrollReveal';
 const rules = [
   {
     number: '01',
-    title: 'Respect Everyone',
-    desc: 'Treat all members with kindness and respect. No harassment, hate speech, or discrimination.',
-    icon: '💛',
+    title: 'Be Respectful and Kind',
+    desc: 'Be courteous, respectful, and understanding to everyone in the group. We will not put up with harassment, hate speech, bullying, or harsh comments about any person or organization.',
+    icon: '🤝',
   },
   {
     number: '02',
-    title: 'No Spam',
-    desc: 'Keep conversations meaningful. No excessive messaging, self-promotion, or unwanted advertising.',
+    title: 'No Drama or Toxicity',
+    desc: "Don't do it here if you want to make drama. You shouldn't attack anyone personally, be overly negative, or start fights on this server. We don't want a stressful environment; rather, we want a nice one.",
     icon: '🚫',
   },
   {
     number: '03',
-    title: 'Keep It SFW',
-    desc: 'All content must be safe for work. No NSFW content in any channels unless specifically marked.',
-    icon: '✅',
+    title: 'Moderation and Bans',
+    desc: 'We believe that everyone should get a second chance. Only serious, ongoing violating rules or a member who is completely out of control and obviously disrespecting others after being warned will get a ban.',
+    icon: '🔨',
   },
   {
     number: '04',
-    title: 'Use Correct Channels',
-    desc: 'Post content in the appropriate channels. Check channel descriptions if you\'re unsure.',
-    icon: '📌',
-  },
-  {
-    number: '05',
-    title: 'Follow Discord TOS',
-    desc: 'All Discord Terms of Service and Community Guidelines must be followed at all times.',
-    icon: '📜',
-  },
-  {
-    number: '06',
-    title: 'Have Fun',
-    desc: 'This is a community. Engage, make friends, and enjoy your time in the den!',
+    title: 'Enjoy Your Stay!',
+    desc: 'Most importantly, have fun, make new friends, and talk about what you like! This group of people does well when everyone works together in a good way.',
     icon: '🎉',
   },
 ];
@@ -47,9 +35,9 @@ function Rules() {
         <ScrollReveal>
           <div className="section-header">
             <span className="section-badge">📋 Guidelines</span>
-            <h2 className="section-title">Pack <span className="text-gradient">Rules</span></h2>
+            <h2 className="section-title">Server <span className="text-gradient">Rules</span></h2>
             <p className="section-subtitle">
-              Simple guidelines to keep our den welcoming for everyone
+              Simple and designed to keep our community a fun and positive place for everyone
             </p>
           </div>
         </ScrollReveal>
