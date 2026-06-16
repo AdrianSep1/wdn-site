@@ -43,7 +43,7 @@ function Join() {
           </ScrollReveal>
           <ScrollReveal delay={400}>
             <a
-              href="https://discord.gg/wolveseden"
+              href="https://discord.gg/GtyhYFUkzr"
               className="btn btn-primary btn-large btn-glow btn-pulse"
               target="_blank"
               rel="noopener noreferrer"

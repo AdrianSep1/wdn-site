@@ -115,7 +115,7 @@ function Hero() {
         </p>
         <div className="hero-actions">
           <a
-            href="https://discord.gg/wolveseden"
+            href="https://discord.gg/GtyhYFUkzr"
             className="btn btn-primary btn-glow"
             target="_blank"
             rel="noopener noreferrer"

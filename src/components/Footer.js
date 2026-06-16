@@ -34,7 +34,7 @@ function Footer() {
           <div className="footer-social">
             <h4 className="footer-nav-title">Connect</h4>
             <a
-              href="https://discord.gg/wolveseden"
+              href="https://discord.gg/GtyhYFUkzr"
               className="footer-discord-btn"
               target="_blank"
               rel="noopener noreferrer"
