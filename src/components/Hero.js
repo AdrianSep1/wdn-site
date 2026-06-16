@@ -6,7 +6,7 @@ function Hero() {
   const heroRef = useRef(null);
   const [loaded, setLoaded] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [stats, setStats] = useState({ members: 233, channels: 50, years: new Date().getFullYear() - 2016 });
+  const [stats, setStats] = useState({ members: 233, years: 10, online: 0 });
 
   useEffect(() => {
     // Trigger entrance animation after mount
@@ -20,9 +20,9 @@ function Hero() {
       .then((res) => res.json())
       .then((data) => {
         setStats({
-          members: data.members || 500,
-          channels: data.channels || 50,
+          members: data.members || 233,
           years: data.years || new Date().getFullYear() - 2016,
+          online: data.online || 0,
         });
       })
       .catch(() => {
@@ -133,13 +133,11 @@ function Hero() {
         <div className="hero-stats">
           <div className="stat">
             <CountUp target={stats.members} />
-            <span className="stat-plus">+</span>
             <span className="stat-label">Members</span>
           </div>
           <div className="stat">
-            <CountUp target={stats.channels} />
-            <span className="stat-plus">+</span>
-            <span className="stat-label">Channels</span>
+            <CountUp target={stats.online} />
+            <span className="stat-label">Online</span>
           </div>
           <div className="stat">
             <CountUp target={stats.years} />
