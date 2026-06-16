@@ -1,46 +1,95 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import CountUp from './CountUp';
 
 function Hero() {
   const particlesRef = useRef(null);
+  const heroRef = useRef(null);
+  const [loaded, setLoaded] = useState(false);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    // Trigger entrance animation after mount
+    const timer = setTimeout(() => setLoaded(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const container = particlesRef.current;
     if (!container) return;
 
-    for (let i = 0; i < 60; i++) {
+    // Create shooting stars
+    const createShootingStar = () => {
+      const star = document.createElement('div');
+      star.classList.add('shooting-star');
+      star.style.top = Math.random() * 60 + '%';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.animationDuration = (1 + Math.random() * 2) + 's';
+      container.appendChild(star);
+      setTimeout(() => star.remove(), 3000);
+    };
+
+    // Regular particles
+    for (let i = 0; i < 80; i++) {
       const particle = document.createElement('div');
       particle.classList.add('particle');
       particle.style.left = Math.random() * 100 + '%';
       particle.style.top = Math.random() * 100 + '%';
       particle.style.animationDelay = Math.random() * 8 + 's';
-      particle.style.animationDuration = (6 + Math.random() * 6) + 's';
-      const size = 1 + Math.random() * 2.5;
+      particle.style.animationDuration = (4 + Math.random() * 6) + 's';
+      const size = 1 + Math.random() * 3;
       particle.style.width = size + 'px';
       particle.style.height = size + 'px';
-      // Stars — white/light blue like the branding
-      const colors = ['#ffffff', '#c8d6e5', '#a0b4c8', '#d4b8ff', '#8fa4ff'];
+      const colors = ['#ffffff', '#c8d6e5', '#a0b4c8', '#d4b8ff', '#8fa4ff', '#e6b422'];
       particle.style.background = colors[Math.floor(Math.random() * colors.length)];
       container.appendChild(particle);
     }
 
+    // Shooting stars interval
+    const interval = setInterval(createShootingStar, 4000);
+
     return () => {
       container.innerHTML = '';
+      clearInterval(interval);
     };
   }, []);
 
+  // Parallax mouse effect
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 2;
+      const y = (e.clientY / window.innerHeight - 0.5) * 2;
+      setMousePos({ x, y });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   return (
-    <section className="hero" id="home">
+    <section className="hero" id="home" ref={heroRef}>
       <div className="hero-bg">
         <div className="particles" ref={particlesRef}></div>
+        <div className="hero-glow" style={{
+          transform: `translate(${mousePos.x * 30}px, ${mousePos.y * 30}px)`
+        }}></div>
+        <div className="hero-orb hero-orb-1"></div>
+        <div className="hero-orb hero-orb-2"></div>
       </div>
-      <div className="hero-content">
-        <div className="hero-logo">
+      <div className={`hero-content ${loaded ? 'hero-loaded' : ''}`}>
+        <div className="hero-logo" style={{
+          transform: `translate(${mousePos.x * -8}px, ${mousePos.y * -8}px)`
+        }}>
           <img src="/images/logo.png" alt="WolvesEden Logo" className="hero-logo-img" />
+          <div className="hero-logo-ring"></div>
         </div>
         <h1 className="hero-title">
           <span className="hero-sub">Welcome to</span>
-          <span className="hero-main">WOLVES EDEN</span>
+          <span className="hero-main">
+            {'WOLVES EDEN'.split('').map((char, i) => (
+              <span key={i} className="hero-letter" style={{ animationDelay: `${0.8 + i * 0.05}s` }}>
+                {char === ' ' ? '\u00A0' : char}
+              </span>
+            ))}
+          </span>
           <span className="hero-tagline">Where the pack runs free</span>
         </h1>
         <p className="hero-description">
@@ -50,7 +99,7 @@ function Hero() {
         <div className="hero-actions">
           <a
             href="https://discord.gg/wolveseden"
-            className="btn btn-primary"
+            className="btn btn-primary btn-glow"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -66,15 +115,18 @@ function Hero() {
         </div>
         <div className="hero-stats">
           <div className="stat">
-            <CountUp target={500} />+
+            <CountUp target={500} />
+            <span className="stat-plus">+</span>
             <span className="stat-label">Members</span>
           </div>
           <div className="stat">
-            <CountUp target={50} />+
+            <CountUp target={50} />
+            <span className="stat-plus">+</span>
             <span className="stat-label">Channels</span>
           </div>
           <div className="stat">
-            <CountUp target={8} />+
+            <CountUp target={8} />
+            <span className="stat-plus">+</span>
             <span className="stat-label">Years Active</span>
           </div>
         </div>
