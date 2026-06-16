@@ -110,8 +110,8 @@ function Hero() {
           <span className="hero-tagline">Where the pack runs free</span>
         </h1>
         <p className="hero-description">
-          A thriving community of gamers, creators, and friends.
-          Join the den and become part of something legendary.
+          Enter Wolves Eden — a growing sanctuary for Filipino gamers.
+          Balance the thrill of the hunt with the peace of the den.
         </p>
         <div className="hero-actions">
           <a
