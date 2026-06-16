@@ -676,17 +676,12 @@ img {
   overflow: hidden;
 }
 
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-}
-
 .about-content {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .about-content p {
@@ -914,11 +909,6 @@ img {
    Responsive - About & Features
    ======================================== */
 @media (max-width: 992px) {
-  .about-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
   .features-grid {
     grid-template-columns: repeat(2, 1fr);
   }
