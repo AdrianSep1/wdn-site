@@ -136,10 +136,6 @@ function Hero() {
             <span className="stat-label">Members</span>
           </div>
           <div className="stat">
-            <CountUp target={stats.online} />
-            <span className="stat-label">Online</span>
-          </div>
-          <div className="stat">
             <CountUp target={stats.years} />
             <span className="stat-plus">+</span>
             <span className="stat-label">Years Active</span>
