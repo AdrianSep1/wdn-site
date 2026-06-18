@@ -1182,6 +1182,32 @@ img {
   line-height: 1.6;
 }
 
+.community-members {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+  justify-content: center;
+}
+
+.community-member-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-text);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  transition: var(--transition);
+}
+
+.community-member-tag:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--role-color, rgba(255, 255, 255, 0.2));
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
+}
+
 /* ========================================
    Join Section
    ======================================== */
